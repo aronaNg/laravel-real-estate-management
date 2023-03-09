@@ -20,3 +20,5 @@ Route::get('/', function () {
 })->name("accueil");
 
 Route::get('/admin', [AdminController::class, 'index'])->name("admin");
+Route::get('/admin/create', [AdminController::class, 'create'])->name("admin.create");
+Route::post('/admin/create', [AdminController::class, 'store'])->name("admin.store");

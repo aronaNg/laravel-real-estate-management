@@ -6,7 +6,7 @@
 
     <div class="mt-4">
         <div class="d-flex justify-content-end">
-            <a href="#" class="btn btn-success mb-4">Créer un bien</a>
+            <a href="{{route('admin.create')}}" class="btn btn-success mb-4">Créer un bien</a>
         </div>
         <table class="table table-striped table-hover table-bordered"">
             <thead>
@@ -17,18 +17,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Meuble</td>
-                <td>
-                    <a href="#" class="btn btn-info">Éditer</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="#" class="btn btn-danger">Supprimer</a>
-                </td>
-              </tr>
+                @forelse ($biens as $bien)
+                <tr>
+                    <th scope="row">{{$bien->id}}</th>
+                    <td>{{$bien->nom}}</td>
+                    <td>
+                        <a href="#" class="btn btn-info">Éditer</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="#" class="btn btn-danger">Supprimer</a>
+                    </td>
+                  </tr>
+                @empty
+                <p>Oups! C'est épuisé.</p>
+                @endforelse
 
             </tbody>
           </table>
+          {{$biens->links()}}
     </div>
 </div>
 

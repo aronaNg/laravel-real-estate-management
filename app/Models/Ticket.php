@@ -10,6 +10,6 @@ class Ticket extends Model
     use HasFactory;
 
     public function bien(){
-        $this->hasOne(Bien::class);
+        return $this->belongsTo(Bien::class);
     }
 }
