@@ -18,12 +18,17 @@ return new class extends Migration
             $table->string('nom_usager');
             $table->string('nom_statut');
             $table->text('commentaire');
+            $table->enum('statut', ['nouveau', 'en cours', 'rejeté', 'terminé', 'clos'])
+                ->default('nouveau');
             $table->foreignId('id_biens')
                 ->references('id')
                 ->on('biens')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
             $table->timestamp('date_statut')
+                ->default(DB::raw('CURRENT_TIMESTAMP'))
+                ->nullable();
+            $table->timestamp('date_saisie')
                 ->default(DB::raw('CURRENT_TIMESTAMP'))
                 ->nullable();
             $table->timestamps();
