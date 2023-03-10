@@ -18,11 +18,11 @@
         </div>
         @foreach($tickets as $ticket)
             <div class="card mb-4">
-                <div class="card-header">{{ $ticket->titre }}</div>
+                <div class="card-header"><strong>Titre</strong> : {{ $ticket->titre }}</div>
                 <div class="card-body">
-                    <p>{{ $ticket->description }}</p>
-                    <p>Statut: {{ $ticket->statut }}</p>
-                    <p>Date de saisie: {{ $ticket->date_saisie }}</p>
+                    <p>Description : {{ $ticket->description }}</p>
+                    <p>Statut : {{ $ticket->statut }}</p>
+                    <p>Date de saisie : {{ $ticket->date_saisie }}</p>
                 </div>
             </div>
         @endforeach

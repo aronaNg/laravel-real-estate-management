@@ -14,7 +14,7 @@ class UsagerController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::orderBy('date_saisie', 'desc')->get();
         return view("usager", compact("tickets"));
     }
 
