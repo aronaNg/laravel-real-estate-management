@@ -13,6 +13,7 @@ class AdminController extends Controller
         return view("admin", compact("biens"));
     }
 
+    //création de bien
     public function create()
     {
         return view("crud.createBien");
@@ -28,9 +29,28 @@ class AdminController extends Controller
         // Créer un nouveau bien à partir des données validées
         Bien::create($validatedData);
 
-        // Rediriger l'utilisateur vers la page d'accueil des biens avec un message de succès
+        // Rediriger l'utilisateur vers la page des biens avec un message de succès
         return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
       }
+
+      //édition de bien
+    public function edit(Bien $bien)
+    {
+        return view("crud.editBien",compact("bien"));
+    }
+
+    public function update(Request $request, Bien $bien)
+    {
+        $validatedData = $request->validate([
+            'nom' => 'required|unique:biens,nom',
+        ]);
+
+        $bien->update($validatedData);
+
+        return redirect()->route('admin')->with("success", "Le bien a été modifié avec succès !");
+    }
+
+    //suppression de bien
     //injection de dépendance
       public function delete(Bien $bien)
     {

@@ -28,3 +28,7 @@ Route::post('/admin/create', [AdminController::class, 'store'])->name("admin.sto
 
 //route pour la suppression
 Route::delete('/admin/{bien}', [AdminController::class, 'delete'])->name("admin.delete");
+
+//route pour l'édition
+Route::get('/admin/{bien}', [AdminController::class, 'edit'])->name("admin.edit");
+Route::put('/admin/{bien}', [AdminController::class, 'update'])->name("admin.update");

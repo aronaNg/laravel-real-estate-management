@@ -37,7 +37,7 @@
                     <th scope="row">{{$bien->id}}</th>
                     <td>{{$bien->nom}}</td>
                     <td>
-                        <a href="#" class="btn btn-info">Éditer</a>
+                        <a href="{{route('admin.edit', ['bien'=>$bien->id])}}" class="btn btn-info">Éditer</a>
                         &nbsp;&nbsp;&nbsp;
                         <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous supprimer ce bien?')){document.getElementById('form-{{$bien->id}}').submit()}">Supprimer</a>
 

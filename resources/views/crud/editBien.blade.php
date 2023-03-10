@@ -2,7 +2,7 @@
 
 @section("content")
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h3 class="border-bottom pb-2 mb-4">Ajout d'un nouveau bien</h3>
+    <h3 class="border-bottom pb-2 mb-4">Édition d'un biens</h3>
 
     <div class="mt-4">
 
@@ -16,11 +16,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <form method="POST" action="{{route('admin.store')}}">
+        <form method="POST" action="{{route('admin.update', ['bien'=>$bien->id])}}">
             @csrf
+
+            <input type="hidden" name="_method" value="put"/>
+
             <div class="mb-3">
               <label for="nom" class="form-label">Nom du bien</label>
-              <input type="text" class="form-control" id="nom" name="nom">
+              <input type="text" class="form-control" id="nom" name="nom" value="{{$bien->nom}}">
             </div>
 
             <button type="submit" class="btn btn-primary">Enregistrer</button>
