@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UsagerController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,8 @@ Route::delete('/admin/{bien}', [AdminController::class, 'delete'])->name("admin.
 //route pour l'édition
 Route::get('/admin/{bien}', [AdminController::class, 'edit'])->name("admin.edit");
 Route::put('/admin/{bien}', [AdminController::class, 'update'])->name("admin.update");
+
+// pour l'usager
+Route::get('/usager', [UsagerController::class, 'index'])->name("usager");
+Route::get('/usager/create', [UsagerController::class, 'create'])->name('usager.create');
+Route::post('/usager/create', [UsagerController::class, 'store'])->name('usager.store');

@@ -13,7 +13,7 @@
         </div>
        @endif
 
-      {{--alert pour la création de bien--}}
+      {{--alert pour la suppression de bien--}}
        @if(session()->has("message"))
        <div class="alert alert-danger alert-dismissible fade show" role="alert"">
            {{session()->get("message")}}
@@ -26,7 +26,7 @@
         <table class="table table-striped table-hover table-bordered"">
             <thead>
               <tr>
-                <th scope="col">No</th>
+                <th scope="col">No index</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -34,7 +34,7 @@
             <tbody>
                 @forelse ($biens as $bien)
                 <tr>
-                    <th scope="row">{{$bien->id}}</th>
+                    <th scope="row">{{$loop->index+1}}</th>
                     <td>{{$bien->nom}}</td>
                     <td>
                         <a href="{{route('admin.edit', ['bien'=>$bien->id])}}" class="btn btn-info">Éditer</a>

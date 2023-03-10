@@ -31,7 +31,7 @@ class AdminController extends Controller
 
         // Rediriger l'utilisateur vers la page des biens avec un message de succès
         return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
-      }
+    }
 
       //édition de bien
     public function edit(Bien $bien)
@@ -41,13 +41,14 @@ class AdminController extends Controller
 
     public function update(Request $request, Bien $bien)
     {
+        $bienEdit=$bien->nom;
         $validatedData = $request->validate([
             'nom' => 'required|unique:biens,nom',
         ]);
 
         $bien->update($validatedData);
 
-        return redirect()->route('admin')->with("success", "Le bien a été modifié avec succès !");
+        return redirect()->route('admin')->with("success", "Le bien  $bienEdit a été modifié avec succès !");
     }
 
     //suppression de bien

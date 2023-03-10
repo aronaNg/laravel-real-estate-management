@@ -19,7 +19,11 @@ return new class extends Migration
             ->references('id')
             ->on('tickets')
             ->cascadeOnUpdate()
-            ->restrictOnDelete();
+            ->constrained()
+            ->onDelete('cascade');
+            $table->timestamp('date_commentaire')
+            ->default(DB::raw('CURRENT_TIMESTAMP'))
+            ->nullable();
             $table->timestamps();
         });
     }

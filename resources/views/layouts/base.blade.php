@@ -89,7 +89,7 @@
           <a class="nav-link" href="{{route('admin')}}">Admin</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Usager</a>
+          <a class="nav-link" href="{{route('usager')}}">Usager</a>
         </li>
       </ul>
 

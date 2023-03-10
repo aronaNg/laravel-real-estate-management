@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         //factory et seeder
-        
-        // \App\Models\Bien::factory(50)->create();
+
+        //\App\Models\Bien::factory(50)->create();
         $this->call(BienSeeder::class);
     }
 }

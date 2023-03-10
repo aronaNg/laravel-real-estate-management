@@ -16,15 +16,16 @@ return new class extends Migration
             $table->string('titre');
             $table->text('description');
             $table->string('nom_usager');
-            $table->string('nom_statut');
-            $table->text('commentaire');
+            $table->string('email_usager');
+         //   $table->string('nom_statut');
+            $table->text('commentaire')->nullable();
             $table->enum('statut', ['nouveau', 'en cours', 'rejeté', 'terminé', 'clos'])
                 ->default('nouveau');
             $table->foreignId('id_biens')
                 ->references('id')
                 ->on('biens')
                 ->cascadeOnUpdate()
-                ->restrictOnDelete();
+                ->onDelete('cascade');
             $table->timestamp('date_statut')
                 ->default(DB::raw('CURRENT_TIMESTAMP'))
                 ->nullable();
