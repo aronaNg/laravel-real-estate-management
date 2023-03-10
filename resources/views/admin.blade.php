@@ -5,6 +5,13 @@
     <h3 class="border-bottom pb-2 mb-4">Listes des biens</h3>
 
     <div class="mt-4">
+        @if(session()->has("success"))
+        <div class="alert alert-success alert-dismissible fade show" role="alert"">
+        {{session()->get("success")}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+       @endif
         <div class="d-flex justify-content-end">
             <a href="{{route('admin.create')}}" class="btn btn-success mb-4">Créer un bien</a>
         </div>
