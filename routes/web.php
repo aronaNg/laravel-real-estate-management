@@ -18,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name("accueil");
-
+//route pour l'affichage
 Route::get('/admin', [AdminController::class, 'index'])->name("admin");
+
+//route pour la création
+
 Route::get('/admin/create', [AdminController::class, 'create'])->name("admin.create");
 Route::post('/admin/create', [AdminController::class, 'store'])->name("admin.store");
+
+//route pour la suppression
+Route::delete('/admin/{bien}', [AdminController::class, 'delete'])->name("admin.delete");

@@ -31,4 +31,11 @@ class AdminController extends Controller
         // Rediriger l'utilisateur vers la page d'accueil des biens avec un message de succès
         return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
       }
+    //injection de dépendance
+      public function delete(Bien $bien)
+    {
+        $bienSupp=$bien->nom;
+        $bien->delete();
+        return redirect()->route('admin')->with("message", "Le bien $bienSupp a été supprimé avec succès !");
+    }
 }
