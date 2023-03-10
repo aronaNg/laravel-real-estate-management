@@ -20,7 +20,7 @@ class BienFactory extends Factory
     public function definition(): array
     {
         return [
-            'nom' => fake()->name(),
+            'nom' => $this->faker->sentence(),
             //
         ];
     }

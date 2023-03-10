@@ -15,12 +15,13 @@ class BienSeeder extends Seeder
     {
         //
 
-        DB::table('biens')->insert([
-            ["nom"=>"Bien1"],
-            ["nom"=>"Bien2"],
-            ["nom"=>"Bien3"],
-            ["nom"=>"Bien4"],
-            ["nom"=>"Bien5"],
-        ]);
+        // DB::table('biens')->insert([
+        //     ["nom"=>"Bien1"],
+        //     ["nom"=>"Bien2"],
+        //     ["nom"=>"Bien3"],
+        //     ["nom"=>"Bien4"],
+        //     ["nom"=>"Bien5"],
+        // ]);
+        \App\Models\Bien::factory(20)->create();
     }
 }

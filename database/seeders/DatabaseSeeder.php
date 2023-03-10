@@ -20,8 +20,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         //factory et seeder
+        // $this->call(BienSeeder::class);
 
-        //\App\Models\Bien::factory(50)->create();
-        $this->call(BienSeeder::class);
+        \App\Models\Bien::factory(20)->create();
+        \App\Models\Ticket::factory(20)->create();
+
     }
 }

@@ -13,7 +13,7 @@
         </div>
        @endif
 
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-start">
             <a href="{{route('usager.create')}}" class="btn btn-success mb-4">Créer un ticket</a>
         </div>
         @foreach($tickets as $ticket)
