@@ -33,7 +33,6 @@
 
                 <label for="bien" class="form-label">Liste des biens :</label>
                 <select class="form-control" name="id_biens">
-                    <option value=""></option>
                     @foreach ($biens as $bien)
                     <option value="{{$bien->id}}">{{$bien->nom}}</option>
                     @endforeach
