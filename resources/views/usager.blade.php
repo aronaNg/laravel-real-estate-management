@@ -39,6 +39,15 @@
                     <p>Description : {{ $ticket->description }}</p>
                     <p>Statut : {{ $ticket->statut }}</p>
                     <p>Date de saisie : {{ $ticket->date_saisie }}</p>
+                    @if($ticket->commentaire)
+                    @foreach(explode(',', $ticket->commentaire) as $commentaire)
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <p>Commentaire : {{ $commentaire }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
                 </div>
                 <div class="card-footer">
                     @if($ticket->statut != 'clos')
@@ -47,7 +56,7 @@
                         @method('PUT')
                         <div class="mb-3">
                             <label for="commentaire" class="form-label">Commentaire</label>
-                            <textarea class="form-control" id="commentaire" name="commentaire" rows="3"></textarea>
+                            <textarea class="form-control" id="commentaire" name="commentaire" rows="3" placeholder="Écrivez votre commentaire avat de cloturer"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Clôturer</button>
                     </form>

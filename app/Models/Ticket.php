@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Commentaires;
+use App\Models\Bien;
 
 class Ticket extends Model
 {
@@ -14,5 +16,11 @@ class Ticket extends Model
     //Un ticket concerne obligatoirement un bien.
     public function bien(){
         return $this->belongsTo(Bien::class);
+    }
+
+
+    public function commentaires()
+    {
+        return $this->hasMany(Commentaires::class);
     }
 }
