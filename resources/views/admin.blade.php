@@ -20,9 +20,14 @@
            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
       @endif
+      <div  class="d-flex justify-content-between">
         <div class="d-flex justify-content-end">
             <a href="{{route('admin.create')}}" class="btn btn-success mb-4">Créer un bien</a>
         </div>
+        <div class="d-flex justify-content-start">
+            <a href="{{ route('admin.tickets') }}" class="btn btn-success mb-4">Voir les tickets</a>
+        </div>
+      </div>
         <table class="table table-striped table-hover table-bordered"">
             <thead>
               <tr>

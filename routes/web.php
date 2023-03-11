@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsagerController;
-
+use App\Http\Controllers\AdminTicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +21,7 @@ Route::get('/', function () {
 })->name("accueil");
 //route pour l'affichage
 Route::get('/admin', [AdminController::class, 'index'])->name("admin");
+Route::get('/admin/tickets', [AdminTicketController::class, 'afficher'])->name("admin.tickets");
 
 //route pour la création
 
@@ -33,8 +34,9 @@ Route::delete('/admin/{bien}', [AdminController::class, 'delete'])->name("admin.
 //route pour l'édition
 Route::get('/admin/{bien}', [AdminController::class, 'edit'])->name("admin.edit");
 Route::put('/admin/{bien}', [AdminController::class, 'update'])->name("admin.update");
+// Route::put('/admin/status', [AdminTicketController::class, 'updateStatus'])->name("admin.updateStatus");
 
-// pour l'usager
+// pour les tickets
 Route::get('/usager', [UsagerController::class, 'index'])->name("usager");
 Route::get('/usager/create', [UsagerController::class, 'create'])->name('usager.create');
 Route::post('/usager/create', [UsagerController::class, 'store'])->name('usager.store');

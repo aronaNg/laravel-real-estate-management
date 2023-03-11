@@ -59,4 +59,5 @@ class AdminController extends Controller
         $bien->delete();
         return redirect()->route('admin')->with("message", "Le bien $bienSupp a été supprimé avec succès !");
     }
+
 }
