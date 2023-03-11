@@ -27,6 +27,7 @@ class AdminTicketController extends Controller
     public function update(Request $request, $id)
     {
         $ticket = Ticket::findOrFail($id);
+        $tickEdit=$ticket->titre;
 
         $request->validate([
             'statut' => 'required|in:nouveau,en cours,terminé,rejeté',
@@ -43,6 +44,6 @@ class AdminTicketController extends Controller
 
         $ticket->save();
 
-        return redirect()->back()->with('success', 'Le statut du ticket a été mis à jour.');
+        return redirect()->back()->with('success', 'Le statut du ticket '.$tickEdit.' a été mis à jour.');
     }
 }

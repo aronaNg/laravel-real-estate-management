@@ -4,6 +4,13 @@
     <div class="container">
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <h3 class="border-bottom pb-2 mb-4">Tous les tickets</h3>
+            {{--alert pour la modif  de ticket--}}
+            @if(session()->has("success"))
+            <div class="alert alert-success alert-dismissible fade show" role="alert"">
+                {{session()->get("success")}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
             <div class="card-columns">
                 @foreach ($tickets as $ticket)
                     <div class="card mb-4">
@@ -22,13 +29,17 @@
                         </div>
                         <div class="card-footer">
                             @if ($ticket->statut == 'rejeté')
-                                        <label for="commentaire">Commentaire :</label>
-                                        <textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
-                                        @if ($errors->has('commentaire'))
-                                            <span class="text-danger">{{ $errors->first('commentaire') }}</span>
-                                        @endif
-                                        <br>
-                                        <button type="submit" class="btn btn-primary my-4">Valider</button>
+                            <form action="{{ route('tickets.update', $ticket->id) }}"  method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <label for="commentaire">Commentaire :</label>
+                                    <textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
+                                    @if ($errors->has('commentaire'))
+                                        <span class="text-danger">{{ $errors->first('commentaire') }}</span>
+                                    @endif
+                                    <br>
+                                    <button type="submit" class="btn btn-primary my-4">Valider</button>
+                            </form>
                             @endif
 
                             @if ($ticket->statut == 'nouveau' || $ticket->statut == 'en cours')
