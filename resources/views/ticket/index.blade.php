@@ -21,8 +21,28 @@
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Voir</a>
-                        <a href="#" class="btn btn-secondary">Modifier</a>
+                        @if ($ticket->statut == 'en cours')
+                            <form action="#" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <select name="statut">
+                                    <option value="en_cours">En cours</option>
+                                    <option value="termine">Terminé</option>
+                                    <option value="rejete">Rejeté</option>
+                                </select>
+                                @if ($errors->has('statut'))
+                                    <span class="text-danger">{{ $errors->first('statut') }}</span>
+                                @endif
+                                <br>
+                                <label for="commentaire">Commentaire :</label>
+                                <textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
+                                @if ($errors->has('commentaire'))
+                                    <span class="text-danger">{{ $errors->first('commentaire') }}</span>
+                                @endif
+                                <br>
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @endforeach
