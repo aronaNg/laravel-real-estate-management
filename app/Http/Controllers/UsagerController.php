@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use App\Models\Bien;
+use App\Models\Commentaires;
 
 use Illuminate\Http\Request;
 
@@ -55,4 +56,26 @@ class UsagerController extends Controller
         // Rediriger vers la page d'accueil avec un message de confirmation
         return redirect()->route('usager')->with('success', 'Le ticket a été créé avec succès.');
     }
+
+    public function close(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+
+        // Vérifier si le ticket est déjà clos
+        if ($ticket->statut == 'clos') {
+            return redirect()->back()->with('error', 'Ce ticket est déjà clos.');
+        }
+
+        // Vérifier si un commentaire a été saisi
+        $request->validate([
+            'commentaire' => 'required'
+        ]);
+
+        $ticket->statut = 'clos';
+        $ticket->commentaire = $request->input('commentaire');
+        $ticket->save();
+
+        return redirect()->back()->with('successClos', 'Le ticket a été fermé avec succès.');
+    }
+
 }

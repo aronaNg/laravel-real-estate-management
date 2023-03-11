@@ -41,3 +41,4 @@ Route::get('/usager', [UsagerController::class, 'index'])->name("usager");
 Route::get('/usager/create', [UsagerController::class, 'create'])->name('usager.create');
 Route::post('/usager/create', [UsagerController::class, 'store'])->name('usager.store');
 Route::put('/tickets/{ticket}', [AdminTicketController::class, 'update'])->name('tickets.update');
+Route::put('/tickets/{ticket}/close', [UsagerController::class, 'close'])->name('usager.tickets.close');
