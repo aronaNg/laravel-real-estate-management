@@ -37,7 +37,13 @@ class AdminTicketController extends Controller
         $ticket->statut = $request->input('statut');
 
         if ($ticket->statut == 'rejeté') {
+            $commentaire = new Commentaires();
+            $commentaire->ticket_id = $ticket->id;
+            $commentaire->nom = $request->input('nom_usager');
+            $commentaire->commentaire = $request->input('commentaire');
+            $commentaire->save();
             $ticket->commentaire = $request->input('commentaire');
+
         } else {
             $ticket->commentaire = null;
         }

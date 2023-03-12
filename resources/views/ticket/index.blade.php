@@ -32,6 +32,10 @@
                             <form action="{{ route('tickets.update', $ticket->id) }}"  method="POST">
                                     @csrf
                                     @method('PUT')
+                                    <div class="mb-3">
+                                        <label for="nom_usager" class="form-label">Nom</label>
+                                        <input type="text" class="form-control" id="nom_usager" name="nom_usager" placeholder="Saisissez votre nom">
+                                    </div>
                                     <label for="commentaire">Commentaire :</label>
                                     <textarea name="commentaire" id="commentaire" cols="30" rows="5"></textarea>
                                     @if ($errors->has('commentaire'))
