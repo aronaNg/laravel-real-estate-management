@@ -58,6 +58,7 @@ class UsagerController extends Controller
         return redirect()->route('usager')->with('success', 'Le ticket a été créé avec succès.');
     }
 
+    // cloturer un ticket
     public function close(Request $request, $id)
     {
         $ticket = Ticket::findOrFail($id);
@@ -71,9 +72,16 @@ class UsagerController extends Controller
         $request->validate([
             'commentaire' => 'required'
         ]);
+        // Mettre à jour les colonnes
 
         $ticket->statut = 'clos';
-        $ticket->commentaire = $request->input('commentaire');
+        $commentaire = new Commentaires();
+        $commentaire->ticket_id = $ticket->id;
+        $commentaire->nom = $request->input('nom_usager');
+        $commentaire->commentaire = $request->input('commentaire');
+        $commentaire->save();
+
+        $ticket->date_statut = now();
         $ticket->save();
 
         return redirect()->back()->with('successClos', 'Le ticket a été fermé avec succès.');

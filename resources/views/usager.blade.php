@@ -49,19 +49,24 @@
                     @endforeach
                 @endif
                 </div>
-                <div class="card-footer">
-                    @if($ticket->statut != 'clos')
-                    <form action="{{ route('usager.tickets.close', $ticket->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-3">
-                            <label for="commentaire" class="form-label">Commentaire</label>
-                            <textarea class="form-control" id="commentaire" name="commentaire" rows="3" placeholder="Écrivez votre commentaire avat de cloturer"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Clôturer</button>
-                    </form>
-                    @endif
-                </div>
+                @if(!in_array($ticket->statut, ['terminé', 'rejeté', 'clos']))
+                    <div class="card-footer">
+                        <form action="{{ route('usager.tickets.close', $ticket->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-3">
+                                <label for="nom_usager" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="nom_usager" name="nom_usager" placeholder="Saisissez votre nom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="commentaire" class="form-label">Commentaire</label>
+                                <textarea class="form-control" id="commentaire" name="commentaire" rows="3" placeholder="Écrivez votre commentaire avant de cloturer"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Clôturer</button>
+                        </form>
+                    </div>
+                 @endif
+
             </div>
         @endforeach
 
